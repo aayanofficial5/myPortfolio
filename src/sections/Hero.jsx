@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { CTAButton } from "../components/CTAButton";
 import profile from "../assets/images/profile.png";
+import { IoMdDownload } from "react-icons/io";
+import { portfolioInfo } from "../data";
 
 const container = {
   hidden: { opacity: 0 },
@@ -33,23 +35,28 @@ const Hero = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="space-y-6"
+          className="space-y-6 max-w-[40vw]"
         >
           <motion.h1
             variants={item}
             className="text-4xl md:text-6xl font-bold text-primary dark:text-primary"
           >
-            Hi, I'm <span className="text-secondary">Aayan Patel</span>
+            Hi, I'm <span className="text-secondary">{portfolioInfo.fullName}</span>
           </motion.h1>
           <motion.p
             variants={fadedItem}
             className="text-lg text-primary dark:text-primary"
-          >
-            A passionate Frontend Developer crafting modern web experiences.
+          >{portfolioInfo.description}
           </motion.p>
 
-          <motion.div variants={item}>
-            <CTAButton href="#projects" label="View Projects" />
+          <motion.div variants={item} className="flex flex-col gap-3">
+            <CTAButton link="#projects" text="View Projects" />
+            <CTAButton
+              link="/LatestResume.pdf"
+              download={true}
+              icon={IoMdDownload}
+              text="Download Resume"
+            />
           </motion.div>
         </motion.div>
       </div>
@@ -62,7 +69,7 @@ const Hero = () => {
         <motion.img
           src={profile}
           alt="profile"
-          className="rounded-full w-72 h-72 object-cover shadow-xl hover:scale-105 transition-transform duration-300"
+          className="rounded-full w-72 h-72 object-cover shadow-xl transition-transform duration-300"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}

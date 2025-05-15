@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Code, Laptop, Zap } from 'lucide-react';
+import { portfolioInfo } from '../data';
 
 const tech = [
   { icon: <Code size={28} />, name: 'JavaScript' },
@@ -9,7 +10,7 @@ const tech = [
 
 const About = () => {
   return (
-    <section id="about" className="bg-accent dark:bg-accent h-[50vh] w-full flex justify-center items-center min-h-full">
+    <section id="about" className="bg-accent dark:bg-accent h-[50vh] w-full flex justify-center items-center min-h-full border-t dark:border-secondary/50">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -19,8 +20,7 @@ const About = () => {
       >
         <div className='flex flex-col items-center gap-2'>
         <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary">About Me</h2>
-        <p className="text-primary dark:text-primary opacity-60 text-lg">
-          I'm a creative frontend developer who loves building beautiful and user-friendly web experiences. With a solid background in modern web technologies and a passion for clean design, I bring ideas to life in the browser.
+        <p className="text-primary dark:text-primary opacity-60 text-lg">{portfolioInfo.aboutMe}
         </p>
         </div>
         <div className="flex flex-row gap-10 w-full">
@@ -30,8 +30,8 @@ const About = () => {
               whileHover={{ scale: 1.1 }}
               className="flex flex-col items-center gap-2 py-3 bg-secondary dark:bg-secondary rounded-xl shadow-md flex-1"
             >
-              <div className="text-accent">{tech.icon}</div>
-              <p className="text-sm font-medium text-gray-700 dark:text-white">{tech.name}</p>
+              <div className="text-primary dark:text-primary">{tech.icon}</div>
+              <p className="text-sm font-medium dark:text-primary">{tech.name}</p>
             </motion.div>
           ))}
         </div>

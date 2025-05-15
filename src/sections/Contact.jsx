@@ -1,29 +1,30 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { useState } from 'react';
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { MdSend } from 'react-icons/md';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   const [status, setStatus] = useState(null); // null | 'success' | 'error'
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Simulated form submission
-    if (formData.name && formData.email && formData.message) {
+  const onSubmit = (data) => {
+    if (data.name && data.email && data.message) {
       setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      reset();
     } else {
       setStatus('error');
     }
   };
 
   return (
-    <section id="contact" className="py-20 px-6 md:px-20 bg-gray-100 dark:bg-secondary">
+    <section id="contact" className="py-20 px-6 md:px-20 bg-accent dark:bg-accent border-t dark:border-secondary/50">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -31,61 +32,67 @@ const Contact = () => {
         viewport={{ once: true }}
         className="max-w-4xl mx-auto"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-900 dark:text-white">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-primary dark:text-primary">
           Contact Me
         </h2>
 
-        <form onSubmit={handleSubmit} className="grid gap-6 bg-white dark:bg-primary p-8 rounded-lg shadow-md">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="grid gap-6 bg-background dark:bg-background p-8 rounded-lg shadow-md"
+        >
           <input
             type="text"
-            name="name"
             placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="p-3 rounded border dark:bg-secondary dark:border-gray-700 dark:text-white"
-            required
+            {...register('name', { required: true })}
+            className="p-3 rounded border-3 border-accent dark:border-accent text-primary dark:text-primary"
           />
+          {errors.name && <span className="text-red-500">Name is required</span>}
+
           <input
             type="email"
-            name="email"
             placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="p-3 rounded border dark:bg-secondary dark:border-gray-700 dark:text-white"
-            required
+            {...register('email', { required: true })}
+            className="p-3 rounded border-3 border-accent dark:border-accent text-primary dark:text-primary"
           />
+          {errors.email && <span className="text-red-500">Email is required</span>}
+
           <textarea
-            name="message"
             placeholder="Your Message"
             rows="5"
-            value={formData.message}
-            onChange={handleChange}
-            className="p-3 rounded border dark:bg-secondary dark:border-gray-700 dark:text-white"
-            required
+            {...register('message', { required: true })}
+            className="p-3 rounded border-3 border-accent dark:border-accent text-primary dark:text-primary"
           ></textarea>
+          {errors.message && <span className="text-red-500">Message is required</span>}
+
           <button
             type="submit"
-            className="bg-accent text-white py-3 rounded hover:opacity-90 transition-all"
+            className="bg-accent dark:bg-accent text-primary py-3 rounded-lg shadow-lg hover:opacity-90 transition-all
+            flex items-center gap-4 text-lg justify-center hover:scale-97 hover:bg-secondary cursor-pointer"
           >
             Send Message
+            <MdSend size={30}/>
           </button>
-          {status === 'success' && (
-            <p className="text-green-600 dark:text-green-400">Message sent successfully!</p>
-          )}
-          {status === 'error' && (
-            <p className="text-red-600 dark:text-red-400">Please fill in all fields.</p>
-          )}
         </form>
 
-        <div className="flex justify-center gap-6 mt-10 text-accent">
+        <div className="flex justify-center gap-6 mt-10 text-primary">
           <a href="mailto:your.email@example.com" aria-label="Email">
-            <Mail size={24} />
+            <FaEnvelope size={24} />
           </a>
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <Linkedin size={24} />
+          <a
+            href="https://linkedin.com/in/yourprofile"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin size={24} />
           </a>
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <Github size={24} />
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <FaGithub size={24} />
           </a>
         </div>
       </motion.div>
