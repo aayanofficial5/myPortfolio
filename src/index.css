@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 
 html,
@@ -11,24 +11,23 @@ body {
   --color-primary: #74787c;
   --color-secondary: #6b7488;
   --color-accent: #506ca8; */
-  --color-background: #1f2937;
-  --color-primary: #f9fafb;
-  --color-secondary: #2563eb;
-  --color-ternary:#e8c918;
-  --color-accent: #111827;
+  --color-background: #b8c8e0;
+  --color-primary: #1f2937;
+  --color-secondary: #688bd8;
+  --color-ternary: #886810;
+  --color-accent: #8ba6cf;
 }
 
 .dark {
-  --color-background: #1f2937;
+  --color-background: #081d2f;
   --color-primary: #f9fafb;
   --color-secondary: #2563eb;
-  --color-ternary:#e8c918;
-  --color-accent: #111827;
-
+  --color-ternary: #e8c918;
+  --color-accent: #113b5e;
 }
 
-*{
-  font-family: 'Outfit','Space Grotesk', sans-serif;
+* {
+  font-family: "Outfit", "Space Grotesk", sans-serif;
 }
 
 /* make all images responsive */
@@ -36,6 +35,3 @@ body {
   max-width: 100%;
   height: auto;
 } */
-
-
-
