@@ -4,7 +4,7 @@ export default function LanguageIcon({ language, cardIcon }) {
 
   return (
     <span
-      className="text-2xl"
+      className="text-4xl"
       style={{
         color: language.color,
       }}

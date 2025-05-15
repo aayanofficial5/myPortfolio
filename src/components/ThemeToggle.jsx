@@ -8,8 +8,9 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed bottom-6 left-6 bg-accent text-white p-2 rounded-full shadow-lg z-50 transition-colors"
-      aria-label="Toggle Dark Mode"
+      className="fixed bottom-2 left-5 bg-accent dark:bg-accent text-primary dark:text-primary p-2 rounded-full shadow-lg z-50 transition-colors cursor-pointer"
+      aria-label="Toggle Mode"
+      title="Toggle Mode"
     >
       {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
     </button>
