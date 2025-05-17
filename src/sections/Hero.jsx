@@ -3,6 +3,7 @@ import { CTAButton } from "../components/CTAButton";
 import profile from "../assets/images/profile.png";
 import { IoMdDownload } from "react-icons/io";
 import { portfolioInfo } from "../data";
+import { FaLaptop } from "react-icons/fa";
 
 const container = {
   hidden: { opacity: 0 },
@@ -21,21 +22,21 @@ const item = {
 
 const fadedItem = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 0.6, y: 0 },
+  show: { opacity: 0.8, y: 0 },
 };
 
 const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-[100vh] flex flex-col md:flex-row items-center justify-around gap-10 p-6 md:p-20 bg-background dark:bg-background"
+      className="min-h-[100vh] flex flex-col-reverse md:flex-row md:items-center justify-evenly p-6 md:p-20 bg-background dark:bg-background"
     >
       <div className="">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="space-y-6 max-w-[40vw]"
+          className="space-y-6 md:max-w-[40vw]"
         >
           <motion.h1
             variants={item}
@@ -50,7 +51,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.div variants={item} className="flex flex-col gap-3">
-            <CTAButton link="#projects" text="View Projects" />
+            <CTAButton link="#projects" text="View Projects" icon={FaLaptop}/>
             <CTAButton
               link="/LatestResume.pdf"
               download={true}
@@ -69,7 +70,7 @@ const Hero = () => {
         <motion.img
           src={profile}
           alt="profile"
-          className="rounded-full w-72 h-72 object-cover shadow-xl transition-transform duration-300"
+          className="rounded-full w-55 h-55 md:w-72 md:h-72 object-cover shadow-md border-10 dark:border-accent"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}

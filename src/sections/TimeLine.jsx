@@ -5,7 +5,7 @@ import { timeline } from '../data';
 
 const Timeline = () => {
   return (
-    <section id="timeline" className="py-20 px-6 md:px-20 bg-background dark:bg-background border-t dark:border-secondary/50">
+    <section id="timeline" className="py-10 px-10 md:px-20 bg-background dark:bg-background border-t dark:border-secondary/50 min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -14,20 +14,24 @@ const Timeline = () => {
         className="max-w-4xl mx-auto"
       >
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-primary dark:text-primary">
-          Resume & Timeline
+          Timeline
         </h2>
 
-        <div className="relative border-l-4 border-secondary dark:border-secondary/60">
+        <div className="relative border-l-4 border-secondary dark:border-secondary/60 w-full">
           {timeline.map((item, index) => (
-            <div key={index} className="mb-10 ml-6">
-              <span className="absolute -left-4.5 bg-secondary rounded-full mt-11 p-2">
-                {item.type === 'work' ? (
-                  <Briefcase className="text-primary w-4 h-4" />
+            <div key={index} className="mb-10 ml-6 flex items-center">
+              <span className="absolute -left-5 bg-secondary rounded-full pt-1.5 px-1.5">
+                {item.type === '' ? (
+                  <button title='Work'>
+                  <Briefcase className="text-primary ml-0.5 mt-0.5 w-5.5 h-5.5"/>
+                  </button>
                 ) : (
-                  <GraduationCap className="text-primary w-4 h-4" />
+                  <button title='Education'>
+                  <GraduationCap className="text-primary w-6 h-6"/>
+                  </button>
                 )}
               </span>
-              <div className="bg-accent dark:bg-accent p-5 rounded-lg shadow">
+              <div className="bg-accent dark:bg-accent p-5 rounded-lg shadow w-full">
                 <h3 className="font-semibold text-lg text-primary dark:text-primary opacity-90">
                   {item.title}
                 </h3>

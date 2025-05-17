@@ -4,7 +4,7 @@ import { projects } from '../data';
 import ProjectCard from '../components/ProjectCard';
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 px-6 md:px-20 bg-accent dark:bg-accent border-t dark:border-secondary/50">
+    <section id="projects" className="py-10 px-10 md:px-20 bg-accent dark:bg-accent border-t dark:border-secondary/50 min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -1,8 +1,9 @@
-import { useForm } from 'react-hook-form';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
-import { MdSend } from 'react-icons/md';
+import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { MdSend } from "react-icons/md";
+import { socials } from "../data";
 
 const Contact = () => {
   const {
@@ -16,15 +17,18 @@ const Contact = () => {
 
   const onSubmit = (data) => {
     if (data.name && data.email && data.message) {
-      setStatus('success');
+      setStatus("success");
       reset();
     } else {
-      setStatus('error');
+      setStatus("error");
     }
   };
 
   return (
-    <section id="contact" className="py-20 px-6 md:px-20 bg-accent dark:bg-accent border-t dark:border-secondary/50">
+    <section
+      id="contact"
+      className="py-10 px-10 md:px-20 bg-accent dark:bg-accent border-t dark:border-secondary/50"
+    >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,26 +47,32 @@ const Contact = () => {
           <input
             type="text"
             placeholder="Your Name"
-            {...register('name', { required: true })}
+            {...register("name", { required: true })}
             className="p-3 rounded border-3 border-accent dark:border-accent text-primary dark:text-primary"
           />
-          {errors.name && <span className="text-red-500">Name is required</span>}
+          {errors.name && (
+            <span className="text-red-500">Name is required</span>
+          )}
 
           <input
             type="email"
             placeholder="Your Email"
-            {...register('email', { required: true })}
+            {...register("email", { required: true })}
             className="p-3 rounded border-3 border-accent dark:border-accent text-primary dark:text-primary"
           />
-          {errors.email && <span className="text-red-500">Email is required</span>}
+          {errors.email && (
+            <span className="text-red-500">Email is required</span>
+          )}
 
           <textarea
             placeholder="Your Message"
             rows="5"
-            {...register('message', { required: true })}
+            {...register("message", { required: true })}
             className="p-3 rounded border-3 border-accent dark:border-accent text-primary dark:text-primary"
           ></textarea>
-          {errors.message && <span className="text-red-500">Message is required</span>}
+          {errors.message && (
+            <span className="text-red-500">Message is required</span>
+          )}
 
           <button
             type="submit"
@@ -70,30 +80,36 @@ const Contact = () => {
             flex items-center gap-4 text-lg justify-center hover:scale-97 hover:bg-secondary cursor-pointer"
           >
             Send Message
-            <MdSend size={30}/>
+            <MdSend size={30} />
           </button>
         </form>
 
         <div className="flex justify-center gap-6 mt-10 text-primary">
-          <a href="mailto:your.email@example.com" aria-label="Email">
-            <FaEnvelope size={24} />
-          </a>
-          <a
-            href="https://linkedin.com/in/yourprofile"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin size={24} />
-          </a>
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-          >
-            <FaGithub size={24} />
-          </a>
+          {socials.map(({ name, mail, icon, url }) => {
+            return (
+              <>
+                {name == "email" ? (
+                  <a
+                    href={`mailto:${mail}`}
+                    aria-label="Email"
+                    className="hover:dark:text-secondary text-2xl bg-background p-2 rounded-full"
+                  >
+                    {icon}
+                  </a>
+                ) : (
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={name}
+                    className="hover:dark:text-secondary text-2xl bg-background p-2 rounded-full"
+                  >
+                    {icon}
+                  </a>
+                )}
+              </>
+            );
+          })}
         </div>
       </motion.div>
     </section>
