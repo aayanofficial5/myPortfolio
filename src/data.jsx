@@ -1,5 +1,7 @@
 import project1 from "./assets/images/project1.png";
 import project2 from "./assets/images/project2.png";
+import achievement1 from "./assets/images/postmanBadge.png";
+
 import {
   FaGithub,
   FaFacebookF,
@@ -28,6 +30,7 @@ import { FaJava, FaNodeJs, FaGitAlt, FaLinux } from "react-icons/fa";
 import { DiVisualstudio } from "react-icons/di";
 import { IoMdContact } from "react-icons/io";
 import { FaTimeline } from "react-icons/fa6";
+import { CheckCircle } from "lucide-react";
 
 const portfolioInfo = {
   fullName: "Aayan Patel",
@@ -36,10 +39,27 @@ const portfolioInfo = {
   aboutMe:
     "I'm a creative frontend developer who loves building beautiful and user-friendly web experiences. With a solid background in modern web technologies and a passion for clean design, I bring ideas to life in the browser.",
 };
+
+const achievements = [
+  {
+    link: "https://api.badgr.io/public/assertions/25g_qsqkRo2bKLhgtxG69w?identity__email=aayanofficial5%40gmail.com",
+    logo: achievement1,
+    title: "Postman API Fundamentals Expert",
+    description: "Received certification for Postman API Fundamentals Expert",
+  },
+  {
+    link: "https://takeuforward.org/profile/aayanofficial5",
+    icon: <CheckCircle className="h-full w-full" />,
+    title: "Coding Problems on Various Platforms",
+    description:
+      "Solved 300+ coding problems on LeetCode, GeeksforGeeks, CodingNinja, and more for placement prep",
+  },
+];
+
 const navLinks = [
   {
     name: "home",
-    url: "#",
+    url: "#home",
     icon: <FaHome />,
   },
   {
@@ -76,8 +96,8 @@ const projects = [
     description:
       "A sleek, modern personal portfolio built with React and Tailwind CSS showcasing skills, resume, and projects.",
     github: "https://github.com/aayanofficial5/myPortfolio",
-    demo: "https://yourportfolio.com",
-    stack: ["javascript", "react", "tailwindcss", "netlify"],
+    demo: "https://aayanofficial5.github.io/myportfolio/",
+    tags: ["javascript", "react", "tailwindcss", "netlify"],
   },
   {
     title: "StudyHub",
@@ -86,7 +106,7 @@ const projects = [
       "An educational platform that enhances student-instructor interaction with JWT authentication and dashboards.",
     github: "https://github.com/aayanofficial5/StudyHub",
     demo: "https://yourportfolio.com",
-    stack: [
+    tags: [
       "javascript",
       "react",
       "expressjs",
@@ -100,10 +120,11 @@ const projects = [
 
 const timeline = [
   {
-    type: 'work',
-    title: 'Frontend Developer Intern - Celebal Technologies',
-    date: 'May 2025 - Present',
-    description: 'Developed modern UIs using React, optimized performance, and collaborated on cross-functional teams.',
+    type: "work",
+    title: "Frontend Developer Intern - Celebal Technologies",
+    date: "May 2025 - Present",
+    description:
+      "Developed modern UIs using React, optimized performance, and collaborated on cross-functional teams.",
   },
   {
     type: "education",
@@ -162,7 +183,7 @@ const skills = [
     icon: (
       <img
         src="https://img.icons8.com/?size=100&id=40670&format=png&color=000000"
-        className="h-12.5"
+        className="h-12 w-12"
       />
     ),
     tag: "skill",
@@ -173,7 +194,7 @@ const skills = [
     icon: (
       <img
         src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"
-        className="h-12"
+        className="h-12 w-11"
       />
     ),
     tag: "skill",
@@ -295,6 +316,7 @@ const skills = [
 
 export {
   portfolioInfo,
+  achievements,
   navLinks,
   projects,
   socials,

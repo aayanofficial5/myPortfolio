@@ -1,30 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Hero from "./sections/Hero";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
-import Timeline from "./sections/Timeline";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
-import SEO from "./components/SEO";
 import SideBar from "./components/SideBar";
 import Achievements from "./sections/Achievements";
+import Timeline from "./sections/TimeLine";
+import NavBar from "./components/NavBar";
 const App = () => {
+  const [showSideBar, setShowSideBar] = useState(false);
   return (
-    <div className="bg-background  text-primary transition-all duration-300 min-h-screen">
-      <SEO
-        title="Aayan Patel | Web Developer"
-        description="Creative frontend developer portfolio using React"
-        keywords="web developer, react, portfolio, frontend"
-      />
-      <SideBar />
-      <Hero />
-      <Achievements />
-      <Skills />
-      <Projects />
-      <Timeline />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      <NavBar setShowSideBar={setShowSideBar} />
+      <SideBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
+      <div className="bg-background  text-primary transition-all duration-300 min-h-screen mt-7 md:mt-0 md:ml-[110px]">
+        <Hero />
+        <Achievements />
+        <Skills />
+        <Projects />
+        <Timeline />
+        <Contact />
+        <Footer />
+      </div>
+    </>
   );
 };
 
