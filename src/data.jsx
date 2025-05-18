@@ -99,30 +99,30 @@ const projects = [
 ];
 
 const timeline = [
-  // {
-  //   type: 'work',
-  //   title: 'Frontend Developer – XYZ Corp',
-  //   date: '2023 – Present',
-  //   description: 'Developed modern UIs using React, optimized performance, and collaborated on cross-functional teams.',
-  // },
   {
-    type: "education",
-    title: "B.Tech in Computer Science – DIT University, Dehradun",
-    date: "2022 – Present",
-    description:
-      "CGPA: 9.0 – Focused on web development, full-stack projects, and problem solving.",
+    type: 'work',
+    title: 'Frontend Developer Intern - Celebal Technologies',
+    date: 'May 2025 - Present',
+    description: 'Developed modern UIs using React, optimized performance, and collaborated on cross-functional teams.',
   },
   {
     type: "education",
-    title: "12th Grade – Cambridge Convent School",
-    date: "2020 – 2021",
+    title: "B.Tech in Computer Science - DIT University, Dehradun",
+    date: "2022 - Present",
+    description:
+      "CGPA: 9.0 - Focused on web development, full-stack projects, and problem solving.",
+  },
+  {
+    type: "education",
+    title: "12th Grade - Cambridge Convent School",
+    date: "2020 - 2021",
     description:
       "Scored 93% in CBSE Board with a strong foundation in Mathematics and Computer Science.",
   },
   {
     type: "education",
-    title: "10th Grade – Cambridge Convent School",
-    date: "2019 – 2020",
+    title: "10th Grade - Cambridge Convent School",
+    date: "2019 - 2020",
     description:
       "Scored 92% in CBSE Board with academic excellence in Science and Math.",
   },

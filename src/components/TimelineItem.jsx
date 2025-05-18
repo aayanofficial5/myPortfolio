@@ -1,20 +1,30 @@
-import React from 'react';
-import { Briefcase, GraduationCap } from 'lucide-react';
+import React from "react";
+import { Briefcase, GraduationCap } from "lucide-react";
 
-const TimelineItem = ({ type, title, date, description }) => {
-  const Icon = type === 'work' ? Briefcase : GraduationCap;
-
+const TimelineItem = ({ item }) => {
   return (
-    <div className="mb-10 ml-6 relative">
-      <span className="absolute -left-3 top-1.5 bg-accent rounded-full p-1.5">
-        <Icon className="text-white w-4 h-4" />
+    <div className="mb-10 ml-6 flex items-center">
+      <span className="absolute -left-5 bg-secondary rounded-full pt-1.5 px-1.5">
+        {item.type === "work" ? (
+          <button title="Work">
+            <Briefcase className="text-primary ml-0.5 mt-0.5 w-5.5 h-5.5" />
+          </button>
+        ) : (
+          <button title="Education">
+            <GraduationCap className="text-primary w-6 h-6" />
+          </button>
+        )}
       </span>
-      <div className="bg-gray-50 dark:bg-primary p-5 rounded-lg shadow">
-        <h3 className="font-semibold text-lg text-gray-800 dark:text-white">
-          {title}
+      <div className="bg-accent dark:bg-accent p-5 rounded-lg shadow w-full">
+        <h3 className="font-semibold text-lg text-primary dark:text-primary opacity-90">
+          {item.title}
         </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-300 mb-2">{date}</p>
-        <p className="text-gray-700 dark:text-gray-200">{description}</p>
+        <p className="text-sm text-primary dark:text-primary opacity-60 mb-2">
+          {item.date}
+        </p>
+        <p className="text-gray-700 dark:text-ternary opacity-60">
+          {item.description}
+        </p>
       </div>
     </div>
   );
