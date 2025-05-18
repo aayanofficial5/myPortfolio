@@ -6,7 +6,7 @@ const Skills = () => {
   return (
     <section
   id="skills"
-  className="flex flex-col items-center bg-background dark:bg-background py-10 px-10 md:px-20 w-full border-t dark:border-secondary/50 min-h-screen"
+  className="flex flex-col items-center bg-background dark:bg-background py-10 px-10 md:px-20 w-full border-t dark:border-secondary/50 min-h-screen scroll-mt-10 md:scroll-mt-0 scroll-smooth"
 >
   <motion.div
     initial={{ opacity: 0, y: 40 }}
@@ -19,7 +19,7 @@ const Skills = () => {
       Skills
     </h2>
 
-    <div className="grid grid-cols-4 md:grid-cols-8 space-y-12 space-x-12 max-w-[90vw] relative pl-10 pt-8">
+    <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 space-y-6 md:space-y-12 md:space-x-12 max-w-[90vw] relative md:pl-10 pt-8">
 
       {skills.map((language, index) => (
         <SkillCard language={language} key={index} />

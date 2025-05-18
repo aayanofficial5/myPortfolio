@@ -6,7 +6,7 @@ import TimelineItem from './../components/TimelineItem';
 
 const Timeline = () => {
   return (
-    <section id="timeline" className="py-10 px-10 md:px-20 bg-background dark:bg-background border-t dark:border-secondary/50 min-h-screen">
+    <section id="timeline" className="py-10 px-10 md:px-20 bg-background dark:bg-background border-t dark:border-secondary/50 min-h-screen scroll-mt-10 md:scroll-mt-0 scroll-smooth">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ const Timeline = () => {
 
         <div className="relative border-l-4 border-secondary dark:border-secondary/60 w-full">
           {timeline.map((item, index) => (
-            <TimelineItem item={item} index={index}/>
+            <TimelineItem item={item} key={index}/>
           ))}
         </div>
       </motion.div>

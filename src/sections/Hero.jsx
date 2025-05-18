@@ -28,7 +28,7 @@ const fadedItem = {
 const Hero = () => {
   return (
     <section
-      id="hero"
+      id="home"
       className="min-h-[100vh] flex flex-col-reverse md:flex-row md:items-center justify-evenly p-6 md:p-20 bg-background dark:bg-background"
     >
       <div className="">
@@ -42,16 +42,18 @@ const Hero = () => {
             variants={item}
             className="text-4xl md:text-6xl font-bold text-primary dark:text-primary"
           >
-            Hi, I'm <span className="text-secondary">{portfolioInfo.fullName}</span>
+            Hi, I'm{" "}
+            <span className="text-secondary">{portfolioInfo.fullName}</span>
           </motion.h1>
           <motion.p
             variants={fadedItem}
             className="text-lg text-primary dark:text-primary"
-          >{portfolioInfo.description}
+          >
+            {portfolioInfo.description}
           </motion.p>
 
           <motion.div variants={item} className="flex flex-col gap-3">
-            <CTAButton link="#projects" text="View Projects" icon={FaLaptop}/>
+            <CTAButton link="#projects" text="View Projects" icon={FaLaptop} />
             <CTAButton
               link="/LatestResume.pdf"
               download={true}

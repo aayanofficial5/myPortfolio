@@ -7,14 +7,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-background dark:bg-background text-center py-4 border-t dark:border-secondary/50 relative">
+    <footer className="bg-background dark:bg-background text-center py-4 border-t dark:border-secondary/50 relative z-0">
       <p className="text-sm text-primary dark:text-primary">
         © {new Date().getFullYear()} {portfolioInfo.fullName}. All rights reserved.
       </p>
 
       <button
         onClick={scrollToTop}
-        className="absolute right-7 bottom-2 hover:bg-accent hover:dark:bg-accent text-white p-2 rounded-full shadow-md hover:scale-105 bg-secondary dark:bg-secondary transition-transform 
+        className="absolute right-2 md:right-7 bottom-2 hover:bg-accent hover:dark:bg-accent text-white p-2 rounded-full shadow-md hover:scale-105 bg-secondary dark:bg-secondary transition-transform 
         cursor-pointer"
         aria-label="Back to top"
       >
