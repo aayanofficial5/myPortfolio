@@ -1,34 +1,61 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { navLinks } from "../data";
 import ThemeToggle from "./ThemeToggle";
+import { ImCross } from "react-icons/im";
 
-const SideBar = () => {
-  const [pathName, setPathName] = useState(window.location.hash.slice(1)); // remove '#' from the hash
+const SideBar = ({ showSideBar, setShowSideBar }) => {
+  const [pathName, setPathName] = useState("home");
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      setPathName(window.location.hash.slice(1)); // update on hash change
-    };
+  const closeRef = useRef();
 
-    // Listen for changes in the hash (e.g., when user scrolls or clicks nav)
-    window.addEventListener("hashchange", handleHashChange);
+  // useEffect(() => {
+  //   const handleHashChange = () => {
+  //     setPathName(window.location.hash.slice(1));
+  //   };
 
-    // Cleanup
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
+  //   window.addEventListener("hashchange", handleHashChange);
+  //   return () => {
+  //     window.removeEventListener("hashchange", handleHashChange);
+  //   };
+  // }, []);
+
+  const scrollToSection = (name) => {
+    const section = document.getElementById(name);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <div className="hidden fixed top-0 bg-blue-950 text-center py-4 h-[100vh] w-fit lg:flex flex-col items-center text-white font-medium">
+    <div
+      className={`fixed top-0 right-0 md:left-0 bg-blue-950 text-center py-4 h-[100vh] w-[160px] md:w-[110px] flex flex-col items-center text-white font-medium z-999 transition-transform duration-300 ease-in-out ${
+        showSideBar ? "translate-x-0" : "translate-x-full md:translate-x-0"
+      }`}
+      ref={closeRef}
+    >
+      {/* Close Button */}
+      <button
+        className="flex justify-end w-full h-[29px] px-4 pb-1 visible md:hidden"
+        onClick={() => setShowSideBar(false)}
+      >
+        <ImCross />
+      </button>
+
+      {/* Nav Links */}
       {navLinks.map(({ name, url, icon }) => (
         <a
           key={name}
           href={url}
           aria-label={name}
-          className={`text-base px-4 py-3 flex flex-col items-center justify-center opacity-80 hover:opacity-100 w-full ${
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection(name);
+            window.history.pushState(null, null, `#${name}`); // Update URL hash manually
+            setPathName(name); // Update your state manually as well
+          }}
+          className={`text-sm px-4 py-3 flex flex-col items-center justify-center opacity-80 hover:opacity-100 w-full ${
             pathName === url.slice(1)
-              ? "bg-gray-700 border-l-2 opacity-100"
+              ? "bg-gray-700 border-r-2 md:border-r-0 md:border-l-2 opacity-100 text-blue-400"
               : ""
           }`}
         >
